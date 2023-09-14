@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <img src="/static/logo.png" alt="logo image" width="30px" height="30px">
+      <h1 class="name">Microblog</h1>
+    </div>
+    <div class="nav">
+      <a href="/home" style="color: black;">Recent</a>
+      <a href="/login">Calender</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="entry">
+      <h2>Add new entry</h2>
+      <form action="/" method="POST">
+        <input type="text" name="title" id="title" placeholder="Title">
+        <textarea name="body" id="entry" cols="30" rows="4" placeholder="Write something..."></textarea>
+        <button type="submit">Add Entry</button>
+      </form>
+    </section>
+
+    <section class="blogs">
+      <h2>All Entries</h2>
+      {% for entry in entries %}
+      <div class="blog">
+        <div class="blog-header">
+          <h3>{{entry['title']}}</h3>
+          <span>. {{entry['date']}}</span>
+        </div>
+        <div class="blog-body">
+          <p>{{entry['content']}}</p>
+        </div>
+      </div>
+      {% endfor %}
+      
+    </section>
+  </main>
+
+  <footer>
+    <div class="left">
+      <p>Created by sankaralingam</p>
+      <p>last updated 13-09-2023</p>
+    </div>
+    <div class="right">
+      <p><a href="#">Recnet</a></p>
+      <p><a href="#">Calender</a></p>
+    </div>
+  </footer>
+</body>
+</html>
+
+
+
+<!-- 
+  DUMMY DATA
+  <div class="blog">
+        <div class="blog-header">
+          <h3>Blog Title</h3>
+          <span>. Oct 2020</span>
+        </div>
+        <div class="blog-body">
+          <p>Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor sit amet consectetur</p>
+        </div>
+      </div> 
+-->
