@@ -21,9 +21,11 @@
   <main>
     <section class="entry">
       <h2>Add new entry</h2>
+
+      <p style="color:red;">{{ message }}</p>
       <form action="/" method="POST">
-        <input type="text" name="title" id="title" placeholder="Title">
-        <textarea name="body" id="entry" cols="30" rows="4" placeholder="Write something..."></textarea>
+        <input type="text" name="title" id="title" placeholder="Title" value="{{ title }}">
+        <textarea name="body" id="entry" cols="30" rows="4" placeholder="Write something...">{{ content }}</textarea>
         <button type="submit">Add Entry</button>
       </form>
     </section>
@@ -55,6 +57,9 @@
       <p><a href="#">Calender</a></p>
     </div>
   </footer>
+  <script>
+    
+  </script>
 </body>
 </html>
 

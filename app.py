@@ -1,4 +1,4 @@
-from flask import Flask,render_template,request
+from flask import Flask,render_template,request, redirect, url_for
 from datetime import datetime
 from pymongo import MongoClient
 import os
@@ -20,9 +20,22 @@ def create_app():
     def home():
         
         entries = []
+
+         # fetch data from db
+        entries = []
+        
+            
+
         if request.method == 'POST':
             entry_title = request.form.get('title')
             entry_content = request.form.get('body')
+            print(entry_title)
+
+            if(len(entry_title) < 5):
+                return render_template('home.html',entries=entries, title = entry_title, content= entry_content, message="Title should have minimum length of 5")
+            
+            if(len(entry_content) < 10):
+                return render_template('home.html',entries=entries, title = entry_title, content= entry_content, message="Description should have minimum length of 10")    
 
             current_date = datetime.now()
             formatted_date = current_date.strftime("%b %d")
@@ -36,16 +49,21 @@ def create_app():
 
             # insert into db
             db.entries.insert_one(new_document)
-        
-        # fetch data from db
-        entries = []
+            for e in db.entries.find({}):
+                entries.append({ 
+                        "title": e["title"],
+                        "content": e['content'],
+                        "date": e['date']
+                        })
+            return redirect(url_for('home'))
+       
         for e in db.entries.find({}):
             entries.append({ 
                     "title": e["title"],
                     "content": e['content'],
                     "date": e['date']
                     })
-
-        return render_template('home.html',entries=entries)
+        return render_template('home.html',entries=entries, title = "", content= "")
 
     return app
+
