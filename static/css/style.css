@@ -11,8 +11,20 @@ body{
   height: 100%;
 }
 
-header{
+.whole{
+  margin: 10px auto;
+  padding: 10px;
   width: 650px;
+}
+
+@media only screen and (max-width: 640px) {
+  .whole {
+   width: 100%;
+  }
+  
+}
+
+header{
   margin: 30px auto;
 
   display: flex;
@@ -52,19 +64,17 @@ header{
 }
 
 main{
-  width: 610px;
-  margin: 20px;
+  /* margin: 20px; */
 
   display: flex;
   flex-direction: column;
   row-gap: 50px;
-
 }
 
 textarea{
   min-height: 100px;
   width: 100%;
-  resize:vertical;
+  resize:none;
 }
 input,textarea{
   width: 100%;
@@ -73,6 +83,7 @@ input,textarea{
   border: none;
   border-radius: 5px;
   background-color: rgb(237, 235, 235);
+  
 }
 
 input:focus,textarea:focus{
@@ -96,6 +107,7 @@ button{
   font-weight: 600;
   border-radius: 5px;
 }
+
 
 .entry h2{
   margin-bottom: 20px;
@@ -144,6 +156,8 @@ h2{
   margin-bottom: 30px;
   box-shadow: 0px 0px 5px 0px rgb(185, 198, 212);
   padding: 20px;
+  /* margin: 20px auto; */
+
 }
 
 .blog{
@@ -155,7 +169,7 @@ h2{
   transform: scale(1.01);
 }
 footer{
-  width: 100%;
+  width:100%;
   height:200px;
   background-color: rgb(11, 34, 58);
   color:white;
@@ -174,4 +188,12 @@ footer p a{
   text-decoration: none;
   color: white;
   font-weight: 300;
+}
+
+
+@media only screen and (max-width: 640px) {
+  footer{
+    width: 100%;
+  }
+  
 }
